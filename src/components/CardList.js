@@ -7,7 +7,7 @@ const CardList = (props) => {
     console.log(card);
     return <CardDetails key={card.id} card = {card} />
   });
-  return <div className='field'>{cards}</div>
+  return <div className='ui grid'>{cards}</div>
 }
 
 

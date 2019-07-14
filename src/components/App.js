@@ -17,8 +17,8 @@ class App extends React.Component {
     return (
     <div className='ui grid container'>
       <CreateCard />
-      <h2>Объявления</h2>
-      <form className='ui form'>
+      <form className='ui grid'>
+        <h2 className="header sixteen wide column">Объявления</h2>
         <CardList cards = {list()} />
       </form>
     </div>
