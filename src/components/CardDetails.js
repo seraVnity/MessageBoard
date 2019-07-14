@@ -1,5 +1,5 @@
 import React from 'react';
-import { remove } from "../storage/storage";
+import { remove } from "../util/storage";
 
 
 class CardDetails extends React.Component {
@@ -7,8 +7,7 @@ class CardDetails extends React.Component {
     const {title, text, phone, photo, id} = this.props.card;
   
   return (
-
-    <div className='ui vertical segment'>
+    <div className='ui sixteen wide column'>
     <p>{title}</p>
     <p>{text}</p>
       <div className='field'>

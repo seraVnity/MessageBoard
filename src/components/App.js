@@ -1,8 +1,7 @@
 import React from 'react';
-import CardDetails from './CardDetails';
 import CreateCard from './CreateCard';
 import CardList from './CardList';
-import { list } from "../storage/storage";
+import { list } from "../util/storage";
 
 // FOR LOCAL STORADGE 
 // localStorage.setItem('cards', JSON.stringify(cards));
@@ -14,15 +13,11 @@ class App extends React.Component {
       this.state = { cards: [] };
   }
 
-//   deleteCard = (title) => {
-//     console.log(title)
-//   };
-
   render() {
     return (
-    <div className='ui container'>
+    <div className='ui grid container'>
       <CreateCard />
-      <h1>Объявления</h1>
+      <h2>Объявления</h2>
       <form className='ui form'>
         <CardList cards = {list()} />
       </form>

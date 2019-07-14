@@ -1,0 +1,18 @@
+#root, label {
+  color: grey !important;
+}
+
+h2:first-child, h2:nth-child(2) {
+  margin-top: 2em;
+}
+.photoLabel {
+  width: 10em;
+  cursor: pointer;
+  color: white !important;
+}
+
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
