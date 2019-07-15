@@ -16,3 +16,7 @@ h2:first-child, h2:nth-child(2) {
   position: absolute;
   z-index: -1;
 }
+
+.image.small.uploaded-image {
+  border-radius: 5px;
+}

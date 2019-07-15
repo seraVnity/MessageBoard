@@ -24,8 +24,7 @@ export function validateText(text) {
   } else if (text.length === 0) {
     validation.text = "Не более 300 символов";
     validation.isValid = undefined
-  } 
-  else {
+  } else {
     validation.text = "Заполнено";
     validation.isValid = true
   }
@@ -41,12 +40,10 @@ export function validatePhone(phone) {
   if (regex) {
     validation.text = "Заполнено";
     validation.isValid = true
-  } 
-  else if (!phone || phone === "") {
+  } else if (!phone || phone === "") {
       validation.text = "Заполните поле";
       validation.isValid = false;
-  } 
-  else {
+  } else {
     validation.text = "Неверный формат";
     validation.isValid = false
   }

@@ -1,29 +1,31 @@
 import React from 'react';
 import CreateCard from './CreateCard';
-import CardList from './CardList';
+import CardDetails from './CardDetails';
 import { list } from "../util/storage";
 
-// FOR LOCAL STORADGE 
-// localStorage.setItem('cards', JSON.stringify(cards));
-// const cards = JSON.parse(localStorage.getItem('cards'));
 
 class App extends React.Component {
   constructor (props) {
       super(props);
-      this.state = { cards: [] };
+      this.state = {};
   }
+  updateCard = (cardId) => {
+    this.setState({cardId})
+  };
 
   render() {
+    const cards = list().map((card) => {
+      return <CardDetails onCardUpdate={this.updateCard} key={card.id} card={card}/>
+    });
     return (
     <div className='ui grid container'>
-      <CreateCard />
+      <CreateCard updateCardId={this.state.cardId} />
       <form className='ui grid'>
         <h2 className="header sixteen wide column">Объявления</h2>
-        <CardList cards = {list()} />
+        <div className='ui grid'>{cards}</div>
       </form>
     </div>
-    
-    )
+    );
   }
 }
 

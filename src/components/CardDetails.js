@@ -3,6 +3,11 @@ import { remove } from "../util/storage";
 import "./CardDetails.css";
 
 class CardDetails extends React.Component {
+  
+  handleUpdate = (e) => {
+    this.props.onCardUpdate(this.props.card.id);
+  };
+  
   render(props) {
     const { title, text, phone, id, photo } = this.props.card;
     return (
@@ -19,11 +24,11 @@ class CardDetails extends React.Component {
             <i className="phone icon" />
             {phone}
           </p>
-
           <input
             className="ui blue basic button"
-            type="submit"
+            type="button"
             value="Редактировать"
+            onClick={this.handleUpdate}
           />
           <input
             className="ui red basic button"

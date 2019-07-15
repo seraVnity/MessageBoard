@@ -20,3 +20,13 @@ export function list() {
 export function remove(cardId) {
   localStorage.removeItem("card." + cardId);
 }
+
+
+export function update(card) {
+  const id = card.id;
+  localStorage.setItem("card." + id, JSON.stringify(card));
+}
+
+export function get(cardId) {
+  return JSON.parse(localStorage.getItem("card." + cardId));
+}
