@@ -16,7 +16,6 @@ class CardValidation extends React.Component {
     } else {
       iconClassName = "check circle icon";
     }
-    console.log(iconClassName);
 
     return (
       <div className="field six column right-text">

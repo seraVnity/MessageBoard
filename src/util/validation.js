@@ -1,5 +1,4 @@
 export function validateTitle(title) {
-  console.log(title);
   const validation = {
     text: "",
     isValid: undefined
@@ -22,7 +21,6 @@ export function validateText(text) {
   if(text.length !== 0 && text.length > 300) {
     validation.text = "Не более 300 символов";
     validation.isValid = false
-    console.log(text.length)
   } else if (text.length === 0) {
     validation.text = "Не более 300 символов";
     validation.isValid = undefined
@@ -40,7 +38,6 @@ export function validatePhone(phone) {
     isValid: undefined
   }
   const regex = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(phone);
-  console.log(regex);
   if (regex) {
     validation.text = "Заполнено";
     validation.isValid = true

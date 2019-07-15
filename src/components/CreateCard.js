@@ -1,5 +1,6 @@
 import React from "react";
 import { add } from "../util/storage";
+import { getBase64 } from "../util/image";
 import { validateTitle, validateText, validatePhone } from "../util/validation";
 import CardValidation from "./CardValidation";
 import './CreateCards.css';
@@ -8,6 +9,7 @@ const initialState = {
   title: "",
   text: "",
   phone: "",
+  photo: undefined,
   titleValidationText: 'Обязательное поле (не более 140 символов)',
   titleIsValid: undefined,
   textValidationText: 'Не более 300 символов',
@@ -21,16 +23,22 @@ class CreateCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
-    // this.addCard = this.addCard.bind(this)
   }
+
   //ADD CARD TO LOCAL STORAGE
   addCard = () => {
     // event.preventDefault();
-    const card = this.state;
+    const card = {
+      title: this.state.title,
+      text: this.state.text,
+      phone: this.state.phone,
+      photo: this.state.photo
+    };
+    console.log(card)
+    
     add(card);
     //Reset the state
     this.setState(initialState);
-    console.log(this.props);
   };
 
   handleTitle = (e) => {
@@ -63,13 +71,24 @@ class CreateCard extends React.Component {
     })
   }
 
+  imageUpload = (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    getBase64(file).then(base64 => {
+      this.setState({photo: base64});
+    });
+};
 
   render() {
-    // const { title, text, phone, photo } = this.props;
     let formValid = false;
     if (this.state.titleIsValid === true && this.state.phoneIsValid === true) {
       formValid = true;
     }
+    let imageUploaded = "photoLabel ui blue button";
+    if (this.state.photo !== undefined) {
+      imageUploaded = "photoLabel ui basic blue button";
+    }
+   
     return (
       <form className="ui form grid" onSubmit={this.addCard}>
         <h2 className="header sixteen wide column">Подать объявление</h2>
@@ -116,17 +135,17 @@ class CreateCard extends React.Component {
         </div>
         <div className="field">
           <div className="field seven wide column">
-            <label htmlFor='upload-photo' className="photoLabel ui blue button">Прикрепить фото</label>
+            <label htmlFor='upload-photo' className={imageUploaded}>Прикрепить фото</label>
             <input
-              // value={this.state.cards.photo}
               type="file"
               name="photo"
               id="upload-photo"
               style={{display:'none'}}
+              onChange={this.imageUpload}
             />
           </div>
           <div className="field four wide column">
-            <button className="ui blue button " value="submit" disabled={!formValid}>
+            <button className="ui blue button" value="submit" disabled={!formValid}>
               Подать
             </button>
           </div>
