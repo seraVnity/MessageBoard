@@ -12,3 +12,6 @@ You can delete your message from the board by the button "Удалить".
 The messages are uploaded to local storage as for the requirements of the test task.
 
 The messages are uploaded to local storage one by one with the ids as I considered it to be clearer and easier to then operate with deletion and listing of them.
+
+#UPDATE message
+You can update you message by pressing "Редактировать". The form for the update will be rendered in the creation form. To update you message change text as you desire and press "Подать". 
