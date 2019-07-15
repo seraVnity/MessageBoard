@@ -3,6 +3,7 @@ export function add(card) {
   const id = Date.now();
   card.id = id;
   localStorage.setItem("card."+ id, JSON.stringify(card));
+  return card;
 }
 
 export function list() {
